@@ -1,15 +1,15 @@
 import turtle as t
-# Score variables
+ 
 
 player_a_score = 0
 player_b_score = 0
 
 win = t.Screen()  # creating a window
-win.title("Ping-Pong Game")  # Giving name to the game.
-win.bgcolor('black')  # providing color to the HomeScreen
-win.setup(width=800, height=600)  # Size of the game panel
-win.tracer(2)  # which speed up the game.
-# Creating left paddle for the game
+win.title("Ping-Pong Game")   
+win.bgcolor('black')  
+win.setup(width=800, height=600)  
+win.tracer(2)   
+ 
 
 paddle_left = t.Turtle()
 paddle_left.speed(0)
@@ -19,7 +19,7 @@ paddle_left.shapesize(stretch_wid=5, stretch_len=1)
 paddle_left.penup()
 paddle_left.goto(-350, 1)
 
-# Creating a right paddle for the game
+ 
 
 paddle_right = t.Turtle()
 paddle_right.speed(1)
@@ -29,7 +29,7 @@ paddle_right.color('blue')
 paddle_right.penup()
 paddle_right.goto(350, 1)
 
-# Creating a pong ball for the game
+ 
 
 ball = t.Turtle()
 ball.speed(0)
@@ -37,10 +37,10 @@ ball.shape('circle')
 ball.color('yellow')
 ball.penup()
 ball.goto(0, 0)
-ball_dx = 1.5  # Setting up the pixels for the ball movement.
+ball_dx = 1.5   .
 ball_dy = 1.5
 
-# Creating a pen for updating the Score
+ 
 
 pen = t.Turtle()
 pen.speed(0)
@@ -51,7 +51,7 @@ pen.goto(0, 260)
 pen.write("Player A: 0                    Player B: 0 ", align="center", font=('Monaco', 24, "normal"))
 
 
-# Moving the left Paddle using the keyboard
+ 
 
 def paddle_left_up():
     y = paddle_left.ycor()
@@ -59,7 +59,7 @@ def paddle_left_up():
     paddle_left.sety(y)
 
 
-# Moving the left paddle down
+ 
 
 def paddle_left_down():
     y = paddle_left.ycor()
@@ -67,7 +67,7 @@ def paddle_left_down():
     paddle_left.sety(y)
 
 
-# Moving the right paddle up
+ 
 
 def paddle_right_up():
     y = paddle_right.ycor()
@@ -75,7 +75,7 @@ def paddle_right_up():
     paddle_right.sety(y)
 
 
-# Moving right paddle down
+ 
 
 def paddle_right_down():
     y = paddle_right.ycor()
@@ -83,7 +83,7 @@ def paddle_right_down():
     paddle_right.sety(y)
 
 
-# Keyboard binding
+ 
 
 win.listen()
 win.onkeypress(paddle_left_up, "w")
@@ -91,7 +91,7 @@ win.onkeypress(paddle_left_down, "s")
 win.onkeypress(paddle_right_up, "Up")
 win.onkeypress(paddle_right_down, "Down")
 
-# Main Game Loop
+ 
 
 while True:
     win.update()  # This methods is mandatory to run any game
@@ -119,7 +119,7 @@ while True:
                   align="center", font=('Monaco', 24, "normal"))
 
 
-    if (ball.xcor()) < -390:     # Left width paddle Border
+    if (ball.xcor()) < -390:      
         ball.goto(0, 0)
         ball_dx = ball_dx * -1
         player_b_score = player_b_score + 1
@@ -127,8 +127,7 @@ while True:
         pen.write("Player A: {}                    Player B: {} ".format(player_a_score, player_b_score),
                   align="center", font=('Monaco', 24, "normal"))
 
-
-# Handling the collisions with paddles.
+ 
 
     if (ball.xcor() > 340) and (ball.xcor() < 350) and (
         ball.ycor() < paddle_right.ycor() + 40 and ball.ycor() > paddle_right.ycor() - 40):
